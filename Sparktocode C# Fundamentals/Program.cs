@@ -355,7 +355,55 @@ namespace Csharpfundamentals
             }
             Console.Write("\n");
 
+            // Advanced: Task 14
 
+            Console.Write("Enter product code (1, 2, or 3): ");
+            int product = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter quantity: ");
+            int quantity = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Do you have a discount coupon (yes/no)?: ");
+            string coupon = Console.ReadLine();
+            bool hasCoupon = (coupon == "yes");
+
+            double unitPrice = 0;
+            bool validProduct = true;
+
+            switch (product)
+            {
+                case 1:
+                    unitPrice = 8.500;
+                    break;
+                case 2:
+                    unitPrice = 12.000;
+                    break;
+                case 3:
+                    unitPrice = 5.000;
+                    break;
+                default:
+                    Console.WriteLine("Invalid product code");
+                    validProduct = false;
+                    break;
+            }
+
+            if (validProduct)
+            {
+                double subtotal = unitPrice * quantity;
+
+                double checkoutDiscount = 0;
+                if (hasCoupon && subtotal > 20)
+                {
+                    checkoutDiscount = subtotal * 0.10;
+                }
+
+                double afterDiscount = subtotal - checkoutDiscount;
+                double tax = afterDiscount * 0.05;
+                double total = afterDiscount + tax;
+
+                Console.WriteLine("The subtotal is: " + subtotal + " OMR.");
+                Console.WriteLine("The discount is: " + checkoutDiscount + " OMR.");
+                Console.WriteLine("The tax is: " + tax + " OMR.");
+                Console.WriteLine("The final total: " + total + " OMR.");
+            }
         }
     }
 }
