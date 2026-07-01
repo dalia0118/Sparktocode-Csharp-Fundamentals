@@ -266,7 +266,64 @@ namespace Csharpfundamentals
             }
             Console.Write("\n");
 
+            // Hard: Task 12
+
+            Console.Write("Enter region code ('A' for local, 'B' for national, 'C' for international): ");
+            char region = Convert.ToChar(Console.ReadLine());
+            region = char.ToUpper(region);
+            Console.Write("Enter package weight (kg): ");
+            double weight = Convert.ToDouble(Console.ReadLine());
+
+            double baseCost = 0;
+            double extra = 0;
+            bool validRegion = true;
+            switch (region)
+            {
+                case 'A':
+                    baseCost = 1.000;
+                    if (weight > 10)
+                    {
+                        extra = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extra = 2.000;
+                    }
+                    break;
+                case 'B':
+                    baseCost = 3.000;
+                    if (weight > 10)
+                    {
+                        extra = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extra = 2.000;
+                    }
+                    break;
+                case 'C':
+                    baseCost = 7.000;
+                    if (weight > 10)
+                    {
+                        extra = 5.000;
+                    }
+                    else if (weight > 5)
+                    {
+                        extra = 2.000;
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid region");
+                    validRegion = false;
+                    break;
+            }
+
+            if (validRegion)
+            {
+                double totalShipping = baseCost + extra;
+                Console.WriteLine("Base Cost: " + baseCost + " OMR. Extra Charge: " + extra + " OMR. Total Shipping Cost: " + totalShipping + " OMR.");
+            }
 
         }
-}
+    }
 }
