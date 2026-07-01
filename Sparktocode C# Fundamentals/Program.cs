@@ -187,6 +187,52 @@ namespace Csharpfundamentals
             }
             Console.Write("\n");
 
+            // Medium: Task 10
+
+            Console.Write("Enter the first number: ");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter the second number: ");
+            double num2 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Enter an operator (+, -, *, /, %): ");
+            char oper = Convert.ToChar(Console.ReadLine());
+
+            switch (oper)
+            {
+                case '+':
+                    Console.WriteLine("Result: " + (num1 + num2));
+                    break;
+                case '-':
+                    Console.WriteLine("Result: " + (num1 - num2));
+                    break;
+                case '*':
+                    Console.WriteLine("Result: " + (num1 * num2));
+                    break;
+                case '/':
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine("Result: " + (num1 / num2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot divide by zero");
+                    }
+                    break;
+                case '%':
+                    if (num2 != 0)
+                    {
+                        Console.WriteLine("Result: " + (num1 % num2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot divide by zero");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Invalid operator");
+                    break;
+            }
+            Console.Write("\n");
+
 
         }
 }
