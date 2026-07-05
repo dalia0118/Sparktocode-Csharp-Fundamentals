@@ -172,6 +172,40 @@
             Console.Write("\n");
 
 
+            // Hard: Task 9 - Validated Positive Number Input
+
+            int numberr = 0;
+            bool isValid = false;
+            do
+            {
+                Console.WriteLine("Enter a positive whole number: ");
+                try
+                {
+                    numberr = Convert.ToInt32(Console.ReadLine());
+                    if (numberr <= 0)
+                    {
+                        Console.WriteLine("Number must be positive, please try again.");
+                    }
+                    else
+                    {
+                        isValid = true;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Invalid input, please enter a whole number.");
+                }
+
+            } while (!isValid);
+            int sum2 = 0;
+            for (int i = 1; i <= numberr; i++)
+            {
+                sum2 += i;
+            }
+            Console.WriteLine("Sum from 1 to " + numberr + " = " + sum2);
+            Console.Write("\n");
+
+
 
         }
     }
