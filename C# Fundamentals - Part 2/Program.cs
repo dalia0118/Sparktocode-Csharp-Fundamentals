@@ -155,6 +155,23 @@
             Console.Write("\n");
 
 
+            // Medium: Task 8 - Sum of Even Numbers Only
+
+            Console.Write("Enter a positive whole number N: ");
+            int n1 = Convert.ToInt32(Console.ReadLine());
+            int sum1 = 0;
+            for (int i = 1; i <= n1; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    sum1 += i;
+                }
+            }
+
+            Console.WriteLine("Sum of even numbers = " + sum1);
+            Console.Write("\n");
+
+
 
         }
     }
