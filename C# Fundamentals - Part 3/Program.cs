@@ -39,6 +39,17 @@
             Console.Write("\n");
 
 
+            // Easy: Task 4 - Subscription End Date
+
+            Console.WriteLine("Enter the number of trial days: ");
+            int trialdays = Convert.ToInt32(Console.ReadLine());
+
+            DateTime startDate = DateTime.Today;
+            DateTime endDate = startDate.AddDays(trialdays);
+            Console.WriteLine("The trial ends on: " + endDate.ToString("yyyy-MM-dd"));
+            Console.Write("\n");
+
+
 
         }
     }
