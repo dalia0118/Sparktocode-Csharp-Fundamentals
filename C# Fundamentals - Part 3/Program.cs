@@ -28,6 +28,17 @@
             Console.Write("\n");
 
 
+            // Easy: Task 3 - Name Formatter
+
+            Console.WriteLine("Enter your full name: ");
+            string fullname = Console.ReadLine();
+
+            Console.WriteLine("Name in uppercase: " + fullname.ToUpper());
+            Console.WriteLine("Name in lowercase: " + fullname.ToLower());
+            Console.WriteLine("Character count: " + fullname.Length);
+            Console.Write("\n");
+
+
 
         }
     }
