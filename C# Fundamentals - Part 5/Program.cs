@@ -122,6 +122,26 @@
             Console.Write("\n");
 
 
+            // Medium: Task 7 - High Score Podium
+            List<int> scores7 = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write("Enter score " + (i + 1) + ": ");
+                int score7 = Convert.ToInt32(Console.ReadLine());
+                scores7.Add(score7);
+            }
+
+            scores7.Sort();
+            scores7.Reverse();
+
+            Console.WriteLine("\nPODIUM");
+            Console.WriteLine("1st place: " + scores7[0]);
+            Console.WriteLine("2nd place: " + scores7[1]);
+            Console.WriteLine("3rd place: " + scores7[2]);
+            Console.Write("\n");
+
+
 
         }
     }
