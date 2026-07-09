@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Linq;
 namespace BankingSystemApp
 {
     internal class Program
@@ -21,8 +22,8 @@ namespace BankingSystemApp
                 Console.WriteLine("3. Withdraw Money");
                 Console.WriteLine("4. Show Balance");
                 Console.WriteLine("5. Transfer Amount");
-                Console.WriteLine("6. <your 1st custom service - choose a name>");
-                Console.WriteLine("7. <your 2nd custom service - choose a name>");
+                Console.WriteLine("6. Find Richest Customer");
+                Console.WriteLine("7. Close an Account");
                 Console.WriteLine("8. Exit");
                 Console.Write("Choose an option: ");
                 int choice;
@@ -75,6 +76,28 @@ namespace BankingSystemApp
         static void AddAccount()
         {
             // TODO: implement this service (see Section 3 requirements)
+            Console.Write("Please enter customer name: ");
+            string Names = Console.ReadLine();
+            Console.Write("Please enter new account number: ");
+            string newAccountNum = Console.ReadLine();
+            if (accountNumbers.Contains(newAccountNum))
+            {
+                Console.WriteLine("This account number already exists.");
+                return;
+            }
+            Console.Write("Enter starting balance: ");
+            double startingBalance = Convert.ToDouble(Console.ReadLine());
+
+            if (startingBalance < 0)
+            {
+                Console.WriteLine("The starting balance cannot be negative.");
+                return;
+            }
+
+            customerNames.Add(Names);
+            accountNumbers.Add(newAccountNum);
+            balances.Add(startingBalance);
+            Console.WriteLine("Account created for " + Names + ", account number " + newAccountNum + ", starting balance " + startingBalance);
         }
         static void DepositMoney()
         {
