@@ -5,7 +5,7 @@ namespace SparktoCodeOOP
     internal class Program
     {
         // Exactly two of each object, individually named with no collections
-        static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "karim", Balance = 120 };
+        static BankAccount account1 = new BankAccount { AccountNumber = 1163, HolderName = "khalid", Balance = 120 };
         static BankAccount account2 = new BankAccount { AccountNumber = 15203, HolderName = "Ali", Balance = 63 };
 
         static Student student1 = new Student { Name = "Ali", Address = "Muscat", Grade = 65 };
@@ -57,61 +57,64 @@ namespace SparktoCodeOOP
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Case 1 (View Account Details) not implemented yet.");
+                        // Case 1 - View Account Details
+                        BankAccount chosen = ChooseAccount();
+                        if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                        chosen.CheckBalance();
                         break;
                     case 2:
-                        Console.WriteLine("Case 2 (Update Student Address) not implemented yet.");
+                        Console.WriteLine("Case 2");
                         break;
                     case 3:
-                        Console.WriteLine("Case 3 (Make a Deposit) not implemented yet.");
+                        Console.WriteLine("Case 3");
                         break;
                     case 4:
-                        Console.WriteLine("Case 4 (Make a Withdrawal) not implemented yet.");
+                        Console.WriteLine("Case 4");
                         break;
                     case 5:
-                        Console.WriteLine("Case 5 (View Product Details) not implemented yet.");
+                        Console.WriteLine("Case 5");
                         break;
                     case 6:
-                        Console.WriteLine("Case 6 (Register a Student) not implemented yet.");
+                        Console.WriteLine("Case 6");
                         break;
                     case 7:
-                        Console.WriteLine("Case 7 (Compare Two Account Balances) not implemented yet.");
+                        Console.WriteLine("Case 7");
                         break;
                     case 8:
-                        Console.WriteLine("Case 8 (Restock Product & Stock Level Check) not implemented yet.");
+                        Console.WriteLine("Case 8");
                         break;
                     case 9:
-                        Console.WriteLine("Case 9 (Transfer Between Accounts) not implemented yet.");
+                        Console.WriteLine("Case 9");
                         break;
                     case 10:
-                        Console.WriteLine("Case 10 (Update Student Grade (Validated)) not implemented yet.");
+                        Console.WriteLine("Case 10");
                         break;
                     case 11:
-                        Console.WriteLine("Case 11 (Student Report Card) not implemented yet.");
+                        Console.WriteLine("Case 11");
                         break;
                     case 12:
-                        Console.WriteLine("Case 12 (Account Health Status) not implemented yet.");
+                        Console.WriteLine("Case 12");
                         break;
                     case 13:
-                        Console.WriteLine("Case 13 (Bulk Sale With Revenue Calculation) not implemented yet.");
+                        Console.WriteLine("Case 13");
                         break;
                     case 14:
-                        Console.WriteLine("Case 14 (Scholarship Eligibility Check) not implemented yet.");
+                        Console.WriteLine("Case 14");
                         break;
                     case 15:
-                        Console.WriteLine("Case 15 (Full Balance Top-Up Flow) not implemented yet.");
+                        Console.WriteLine("Case 15");
                         break;
                     case 16:
-                        Console.WriteLine("Case 16 (Quick Account Opening (New Account)) not implemented yet.");
+                        Console.WriteLine("Case 16");
                         break;
                     case 17:
-                        Console.WriteLine("Case 17 (Total Students Counter) not implemented yet.");
+                        Console.WriteLine("Case 17");
                         break;
                     case 18:
-                        Console.WriteLine("Case 18 (Overdrawn Account Check) not implemented yet.");
+                        Console.WriteLine("Case 18");
                         break;
                     case 19:
-                        Console.WriteLine("Case 19 (Set Student Security PIN) not implemented yet.");
+                        Console.WriteLine("Case 19");
                         break;
                     case 20:
                         exitApp = true;
@@ -122,6 +125,19 @@ namespace SparktoCodeOOP
                         break;
                 }
             }
+        }
+
+
+        // Case 1 - View Account Details
+        static BankAccount ChooseAccount()
+        {
+            Console.WriteLine("1. " + account1.HolderName + " (Account #" + account1.AccountNumber + ")");
+            Console.WriteLine("2. " + account2.HolderName + " (Account #" + account2.AccountNumber + ")");
+            Console.Write("Choose account (1 or 2): ");
+            string input = Console.ReadLine();
+            if (input == "1") return account1;
+            if (input == "2") return account2;
+            return null;
         }
 
         class BankAccount
