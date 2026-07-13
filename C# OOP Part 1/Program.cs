@@ -76,8 +76,21 @@ namespace SparktoCodeOOP
                             break;
                         }
                     case 3:
-                        Console.WriteLine("Case 3");
-                        break;
+                        {
+                            // Case 3 - Make a Deposit
+                            BankAccount chosen = ChooseAccount();
+                            if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                            Console.Write("Enter deposit amount: ");
+                            double amount;
+                            if (!double.TryParse(Console.ReadLine(), out amount) || amount <= 0)
+                            {
+                                Console.WriteLine("Deposit amount must be a positive number.");
+                                break;
+                            }
+                            chosen.Deposit(amount);
+                            Console.WriteLine(chosen.HolderName + "'s new balance is " + chosen.Balance);
+                            break;
+                        }
                     case 4:
                         Console.WriteLine("Case 4");
                         break;
