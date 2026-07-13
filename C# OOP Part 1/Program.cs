@@ -92,8 +92,21 @@ namespace SparktoCodeOOP
                             break;
                         }
                     case 4:
-                        Console.WriteLine("Case 4");
-                        break;
+                        {
+                            // Case 4 - Make a Withdrawal
+                            BankAccount chosen = ChooseAccount();
+                            if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                            Console.Write("Enter withdrawal amount: ");
+                            double amount;
+                            if (!double.TryParse(Console.ReadLine(), out amount) || amount <= 0)
+                            {
+                                Console.WriteLine("Withdrawal amount must be a positive number.");
+                                break;
+                            }
+                            chosen.Withdraw(amount);
+                            Console.WriteLine(chosen.HolderName + "'s balance is now " + chosen.Balance);
+                            break;
+                        }
                     case 5:
                         Console.WriteLine("Case 5");
                         break;
