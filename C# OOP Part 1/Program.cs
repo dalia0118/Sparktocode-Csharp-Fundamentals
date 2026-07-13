@@ -57,14 +57,24 @@ namespace SparktoCodeOOP
                 switch (choice)
                 {
                     case 1:
-                        // Case 1 - View Account Details
-                        BankAccount chosen = ChooseAccount();
-                        if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
-                        chosen.CheckBalance();
-                        break;
+                        {
+                            // Case 1 - View Account Details
+                            BankAccount chosen = ChooseAccount();
+                            if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                            chosen.CheckBalance();
+                            break;
+                        }
                     case 2:
-                        Console.WriteLine("Case 2");
-                        break;
+                        {
+                            // Case 2 - Update Student Address
+                            Student chosen = ChooseStudent();
+                            if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                            Console.Write("Enter new address: ");
+                            string newAddress = Console.ReadLine();
+                            chosen.Address = newAddress;
+                            Console.WriteLine(chosen.Name + "'s address updated to: " + chosen.Address);
+                            break;
+                        }
                     case 3:
                         Console.WriteLine("Case 3");
                         break;
@@ -137,6 +147,17 @@ namespace SparktoCodeOOP
             string input = Console.ReadLine();
             if (input == "1") return account1;
             if (input == "2") return account2;
+            return null;
+        }
+        // Case 2 - Update Student Address
+        static Student ChooseStudent()
+        {
+            Console.WriteLine("1. " + student1.Name);
+            Console.WriteLine("2. " + student2.Name);
+            Console.Write("Choose student (1 or 2): ");
+            string input = Console.ReadLine();
+            if (input == "1") return student1;
+            if (input == "2") return student2;
             return null;
         }
 
