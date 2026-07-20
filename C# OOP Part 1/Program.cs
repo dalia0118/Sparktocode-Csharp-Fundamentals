@@ -258,8 +258,28 @@ namespace SparktoCodeOOP
                             break;
                         }
                     case 13:
-                        Console.WriteLine("Case 13");
-                        break;
+                        {
+                            // Case 13 - Bulk Sale With Revenue Calculation
+                            Product chosen = ChooseProduct();
+                            if (chosen == null) { Console.WriteLine("Invalid selection."); break; }
+                            Console.Write("Enter quantity to sell: ");
+                            int quantity;
+                            if (!int.TryParse(Console.ReadLine(), out quantity) || quantity <= 0)
+                            {
+                                Console.WriteLine("Quantity must be a positive whole number.");
+                                break;
+                            }
+                            if (quantity > chosen.StockQuantity)
+                            {
+                                int needed = quantity - chosen.StockQuantity;
+                                Console.WriteLine("Not enough stock. You need " + needed + " more unit(s) to fulfill this order.");
+                                break;
+                            }
+                            chosen.Sell(quantity);
+                            double revenue = quantity * chosen.Price;
+                            Console.WriteLine("Sale successful. Total revenue: " + revenue);
+                            break;
+                        }
                     case 14:
                         Console.WriteLine("Case 14");
                         break;
