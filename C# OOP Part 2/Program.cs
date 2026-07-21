@@ -40,7 +40,7 @@ namespace HotelManagementSystem
                 Console.WriteLine("13. Extend Guest Stay");
                 Console.WriteLine("14. Highest Revenue Booking");
                 Console.WriteLine("15. Guest Pagination Viewer");
-                Console.WriteLine(" 0. Exit");
+                Console.WriteLine("16. Exit");
                 Console.WriteLine("================================================");
                 Console.Write("Enter your choice: ");
 
@@ -90,8 +90,38 @@ namespace HotelManagementSystem
                             break;
                         }
                     case 2:
-                        Console.WriteLine("Case 2");
-                        break;
+                        {
+                            // Case 02 Register New Guest
+                            Console.Write("Enter guest name: ");
+                            string newGuestName = Console.ReadLine();
+
+                            Console.Write("Enter check-in date: ");
+                            string newCheckInDate = Console.ReadLine();
+
+                            Console.Write("Enter number of nights: ");
+                            int newTotalNights;
+                            if (!int.TryParse(Console.ReadLine(), out newTotalNights) || newTotalNights <= 0)
+                            {
+                                Console.WriteLine("Number of nights must be a positive number.");
+                                break;
+                            }
+
+                            string newGuestId = "G" + (guests.Count + 1).ToString("D3");
+
+                            Guest newGuest = new Guest
+                            {
+                                guestId = newGuestId,
+                                guestName = newGuestName,
+                                roomNumber = "Not Assigned",
+                                checkInDate = newCheckInDate,
+                                totalNights = newTotalNights
+                            };
+                            guests.Add(newGuest);
+
+                            Console.WriteLine("Guest registered successfully!");
+                            Console.WriteLine(newGuestId + " | " + newGuestName + " | Check-in: " + newCheckInDate + " | Nights: " + newTotalNights);
+                            break;
+                        }
                     case 3:
                         Console.WriteLine("Case 3");
                         break;
@@ -131,7 +161,7 @@ namespace HotelManagementSystem
                     case 15:
                         Console.WriteLine("Case 15");
                         break;
-                    case 0:
+                    case 16:
                         exitApp = true;
                         Console.WriteLine("Goodbye!");
                         break;
