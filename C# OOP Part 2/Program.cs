@@ -427,8 +427,55 @@ namespace HotelManagementSystem
                             break;
                         }
                     case 11:
-                        Console.WriteLine("Case 11");
-                        break;
+                        {
+                            // Case 11 Check Out a Guest
+                            Console.Write("Enter guest ID to check out: ");
+                            string checkoutId = Console.ReadLine();
+                            Guest checkoutGuest = guests.FirstOrDefault(g => g.guestId == checkoutId);
+                            if (checkoutGuest == null)
+                            {
+                                Console.WriteLine("Error: Guest not found.");
+                                break;
+                            }
+
+                            if (checkoutGuest.roomNumber == "Not Assigned")
+                            {
+                                Console.WriteLine("This guest has no active booking.");
+                                break;
+                            }
+
+                            Room checkoutRoom = rooms.FirstOrDefault(r => r.roomNumber.ToString() == checkoutGuest.roomNumber);
+                            Console.WriteLine("==== Final Bill ====");
+                            Console.WriteLine("Guest: " + checkoutGuest.guestName);
+                            Console.WriteLine("Room: " + checkoutGuest.roomNumber + (checkoutRoom != null ? " (" + checkoutRoom.roomType + ")" : ""));
+                            Console.WriteLine("Check-in: " + checkoutGuest.checkInDate);
+                            Console.WriteLine("Total nights: " + checkoutGuest.totalNights);
+                            Console.WriteLine("Price per night: OMR " + checkoutGuest.pricePerNight.ToString("F2"));
+                            Console.WriteLine("Total cost: OMR " + checkoutGuest.calculateTotalCost().ToString("F2"));
+
+                            Console.Write("Confirm checkout? (Y/N): ");
+                            string confirm = Console.ReadLine();
+                            if (confirm.ToUpper() != "Y")
+                            {
+                                Console.WriteLine("Checkout cancelled.");
+                                break;
+                            }
+
+                            if (checkoutRoom != null)
+                            {
+                                checkoutRoom.isAvailable = true;
+                            }
+                            guests.Remove(checkoutGuest);
+
+                            Console.WriteLine("Checkout complete.");
+                            Console.WriteLine("Total guests remaining: " + guests.Count);
+                            Console.WriteLine("Total rooms: " + rooms.Count);
+                            if (checkoutRoom != null)
+                            {
+                                Console.WriteLine("Room now available: " + rooms.Any(r => r.roomNumber == checkoutRoom.roomNumber && r.isAvailable));
+                            }
+                            break;
+                        }
                     case 12:
                         Console.WriteLine("Case 12");
                         break;
